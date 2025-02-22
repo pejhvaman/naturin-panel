@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import GlobalStyles from "./styles/GlobalStyles";
+import Button from "./ui/Button";
+import Input from "./ui/Input";
 
 const H1 = styled.h1`
   font-size: 1.4rem;
@@ -7,15 +10,19 @@ const H1 = styled.h1`
 `;
 
 const StyledApp = styled.div`
-  background-color: purple;
   padding: 2rem;
 `;
 
 function App() {
   return (
-    <StyledApp>
-      <H1>hello</H1>
-    </StyledApp>
+    <>
+      <GlobalStyles />
+      <StyledApp>
+        <H1>hello</H1>
+        <Button>Check in</Button>
+        <Input type="number" placeholder="hello inout" />
+      </StyledApp>
+    </>
   );
 }
 
