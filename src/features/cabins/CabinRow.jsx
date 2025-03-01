@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import styled from "styled-components";
 
 import { formatCurrency } from "../../utils/helpers";
@@ -81,7 +80,7 @@ function CabinRow({ cabin }) {
 
   return (
     <TableRow role="row">
-      <Img src={image} />
+      <Img src={image || "./image"} />
       <Cabin>{name}</Cabin>
       <div>Fit up to {maxCapacity} guests</div>
       <Price>{formatCurrency(regularPrice)}</Price>
