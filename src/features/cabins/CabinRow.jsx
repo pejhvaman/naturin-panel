@@ -74,12 +74,16 @@ function CabinRow({ cabin }) {
         <Cabin>{name}</Cabin>
         <div>Fit up to {maxCapacity} guests</div>
         <Price>{formatCurrency(regularPrice)}</Price>
-        <Discount>{formatCurrency(discount)}</Discount>
+        {discount ? (
+          <Discount>{formatCurrency(discount)}</Discount>
+        ) : (
+          <span>&mdash;</span>
+        )}
         <div>
           <button onClick={() => deleteCabin(cabinId)} disabled={isDeleting}>
             delete
           </button>
-          -<button onClick={() => setShowEditForm((is) => !is)}>edit</button>
+          --<button onClick={() => setShowEditForm((is) => !is)}>edit</button>
         </div>
       </TableRow>
       {showEditForm && <CreateCabinForm cabinToEdit={cabin} />}
