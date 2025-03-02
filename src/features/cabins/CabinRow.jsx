@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 import { formatCurrency } from "../../utils/helpers";
+import { GoDuplicate, GoTrash, GoPencil } from "react-icons/go";
 
 import PropTypes from "prop-types";
 import { useState } from "react";
 import CreateCabinForm from "./CreateCabinForm";
 import { useDeleteCabin } from "./useDeleteCabin";
+import { useCreateCabin } from "./useCreateCabin";
 
 const TableRow = styled.div`
   display: grid;
@@ -56,6 +58,8 @@ CabinRow.propType = {
 function CabinRow({ cabin }) {
   const [showEditForm, setShowEditForm] = useState();
 
+  const { isCreating, createCabin } = useCreateCabin();
+
   const {
     id: cabinId,
     image,
@@ -63,9 +67,21 @@ function CabinRow({ cabin }) {
     maxCapacity,
     regularPrice,
     discount,
+    description,
   } = cabin;
 
   const { isDeleting, deleteCabin } = useDeleteCabin();
+
+  const handleDuplicateCabin = () => {
+    createCabin({
+      name: `Copy of ${name}`,
+      image,
+      maxCapacity,
+      regularPrice,
+      discount,
+      description,
+    });
+  };
 
   return (
     <>
@@ -79,11 +95,17 @@ function CabinRow({ cabin }) {
         ) : (
           <span>&mdash;</span>
         )}
-        <div>
-          <button onClick={() => deleteCabin(cabinId)} disabled={isDeleting}>
-            delete
+        {/* temp */}
+        <div style={{ display: "flex", gap: "1rem" }}>
+          <button disabled={isCreating} onClick={handleDuplicateCabin}>
+            <GoDuplicate />
           </button>
-          --<button onClick={() => setShowEditForm((is) => !is)}>edit</button>
+          <button onClick={() => deleteCabin(cabinId)} disabled={isDeleting}>
+            <GoTrash />
+          </button>
+          <button onClick={() => setShowEditForm((is) => !is)}>
+            <GoPencil />
+          </button>
         </div>
       </TableRow>
       {showEditForm && <CreateCabinForm cabinToEdit={cabin} />}
