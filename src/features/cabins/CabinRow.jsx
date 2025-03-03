@@ -4,10 +4,11 @@ import { formatCurrency } from "../../utils/helpers";
 import { GoDuplicate, GoTrash, GoPencil } from "react-icons/go";
 
 import PropTypes from "prop-types";
-import { useState } from "react";
 import CreateCabinForm from "./CreateCabinForm";
 import { useDeleteCabin } from "./useDeleteCabin";
 import { useCreateCabin } from "./useCreateCabin";
+import Modal from "../../ui/Modal";
+import ConfirmDelete from "../../ui/ConfirmDelete";
 
 const TableRow = styled.div`
   display: grid;
@@ -56,8 +57,6 @@ CabinRow.propType = {
 };
 
 function CabinRow({ cabin }) {
-  const [showEditForm, setShowEditForm] = useState();
-
   const { isCreating, createCabin } = useCreateCabin();
 
   const {
@@ -84,32 +83,45 @@ function CabinRow({ cabin }) {
   };
 
   return (
-    <>
-      <TableRow role="row">
-        <Img src={image || "./image"} />
-        <Cabin>{name}</Cabin>
-        <div>Fit up to {maxCapacity} guests</div>
-        <Price>{formatCurrency(regularPrice)}</Price>
-        {discount ? (
-          <Discount>{formatCurrency(discount)}</Discount>
-        ) : (
-          <span>&mdash;</span>
-        )}
-        {/* temp */}
-        <div style={{ display: "flex", gap: "1rem" }}>
-          <button disabled={isCreating} onClick={handleDuplicateCabin}>
-            <GoDuplicate />
-          </button>
-          <button onClick={() => deleteCabin(cabinId)} disabled={isDeleting}>
-            <GoTrash />
-          </button>
-          <button onClick={() => setShowEditForm((is) => !is)}>
-            <GoPencil />
-          </button>
-        </div>
-      </TableRow>
-      {showEditForm && <CreateCabinForm cabinToEdit={cabin} />}
-    </>
+    <TableRow role="row">
+      <Img src={image || "./image"} />
+      <Cabin>{name}</Cabin>
+      <div>Fit up to {maxCapacity} guests</div>
+      <Price>{formatCurrency(regularPrice)}</Price>
+      {discount ? (
+        <Discount>{formatCurrency(discount)}</Discount>
+      ) : (
+        <span>&mdash;</span>
+      )}
+      <div style={{ display: "flex", gap: "1rem" }}>
+        <button disabled={isCreating} onClick={handleDuplicateCabin}>
+          <GoDuplicate />
+        </button>
+        <Modal>
+          <Modal.Open opens="delete">
+            <button>
+              <GoTrash />
+            </button>
+          </Modal.Open>
+          <Modal.Window name="delete">
+            <ConfirmDelete
+              resourceName="cabin"
+              onConfirm={() => deleteCabin(cabinId)}
+              disabled={isDeleting}
+            />
+          </Modal.Window>
+
+          <Modal.Open opens="edit">
+            <button>
+              <GoPencil />
+            </button>
+          </Modal.Open>
+          <Modal.Window name="edit">
+            <CreateCabinForm cabinToEdit={cabin} />
+          </Modal.Window>
+        </Modal>
+      </div>
+    </TableRow>
   );
 }
 
