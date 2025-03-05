@@ -10,6 +10,7 @@ import { useCreateCabin } from "./useCreateCabin";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import Table from "../../ui/Table";
+import Menus from "../../ui/Menus";
 
 const Img = styled.img`
   display: block;
@@ -46,7 +47,7 @@ CabinRow.propType = {
 };
 
 function CabinRow({ cabin }) {
-  const { isCreating, createCabin } = useCreateCabin();
+  const { createCabin } = useCreateCabin();
 
   const {
     id: cabinId,
@@ -82,16 +83,24 @@ function CabinRow({ cabin }) {
       ) : (
         <span>&mdash;</span>
       )}
-      <div style={{ display: "flex", gap: "1rem" }}>
-        <button disabled={isCreating} onClick={handleDuplicateCabin}>
-          <GoDuplicate />
-        </button>
-        <Modal>
-          <Modal.Open opens="delete">
-            <button>
-              <GoTrash />
-            </button>
-          </Modal.Open>
+      <Modal>
+        <Menus.Menu>
+          <Menus.Toggle id={cabinId} />
+
+          <Menus.List id={cabinId}>
+            <Modal.Open opens="delete">
+              <Menus.Button icon={<GoTrash />}>Delete</Menus.Button>
+            </Modal.Open>
+
+            <Menus.Button icon={<GoDuplicate />} onClick={handleDuplicateCabin}>
+              Duplicate
+            </Menus.Button>
+
+            <Modal.Open opens="edit">
+              <Menus.Button icon={<GoPencil />}>Edit</Menus.Button>
+            </Modal.Open>
+          </Menus.List>
+
           <Modal.Window name="delete">
             <ConfirmDelete
               resourceName="cabin"
@@ -100,16 +109,11 @@ function CabinRow({ cabin }) {
             />
           </Modal.Window>
 
-          <Modal.Open opens="edit">
-            <button>
-              <GoPencil />
-            </button>
-          </Modal.Open>
           <Modal.Window name="edit">
             <CreateCabinForm cabinToEdit={cabin} />
           </Modal.Window>
-        </Modal>
-      </div>
+        </Menus.Menu>
+      </Modal>
     </Table.Row>
   );
 }
