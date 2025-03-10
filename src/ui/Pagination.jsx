@@ -1,6 +1,7 @@
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
+import { RES_PER_PAGE } from "../utils/constants";
 
 const StyledPagination = styled.div`
   width: 100%;
@@ -57,8 +58,6 @@ const PaginationButton = styled.button`
     color: var(--color-brand-50);
   }
 `;
-
-const RES_PER_PAGE = 10;
 
 function Pagination({ count }) {
   const [searchParams, setSearchParams] = useSearchParams();

@@ -7,23 +7,28 @@ export function useBookings() {
 
   const filterValue = searchParams.get("status");
 
+  //FILTER
   const filter =
     !filterValue || filterValue === "all"
       ? null
       : { field: "status", value: filterValue, method: "eq" };
 
+  //SORT
   const sortByRaw = searchParams.get("sortBy") || "startDate-desc";
   const [field, direction] = sortByRaw.split("-");
   const sortBy = { field, direction };
 
+  //PAGINATION
+  const page = !searchParams.get("page") ? 1 : Number(searchParams.get("page"));
+
   const {
-    data: bookings,
+    data: { data: bookings, count } = {},
     isLoading: isBookingsLoading,
     error,
   } = useQuery({
-    queryKey: ["bokkings", filter, sortBy],
-    queryFn: () => getBookings({ filter, sortBy }),
+    queryKey: ["bookings", filter, sortBy, page],
+    queryFn: () => getBookings({ filter, sortBy, page }),
   });
 
-  return { isBookingsLoading, bookings, error };
+  return { isBookingsLoading, bookings, error, count };
 }
