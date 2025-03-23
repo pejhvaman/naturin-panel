@@ -1,1 +1,1 @@
-export const RES_PER_PAGE = 5;
+export const RES_PER_PAGE = 15;
