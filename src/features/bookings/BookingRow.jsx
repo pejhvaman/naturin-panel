@@ -7,7 +7,7 @@ import Menus from "../../ui/Menus";
 
 import { formatCurrency } from "../../utils/helpers";
 import { formatDistanceFromNow } from "../../utils/helpers";
-import { GoEye } from "react-icons/go";
+import { GoChecklist, GoEye } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 
 const Cabin = styled.div`
@@ -94,6 +94,14 @@ function BookingRow({
           >
             Show details
           </Menus.Button>
+          {status === "unconfirmed" && (
+            <Menus.Button
+              icon={<GoChecklist />}
+              onClick={() => navigate(`/checkin/${bookingId}`)}
+            >
+              Check in
+            </Menus.Button>
+          )}
         </Menus.List>
       </Menus.Menu>
     </Table.Row>
