@@ -9,6 +9,11 @@ const Input = styled.input`
   &::placeholder {
     color: var(--color-grey-300);
   }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
 `;
 
 export default Input;

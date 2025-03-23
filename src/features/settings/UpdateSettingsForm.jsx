@@ -23,6 +23,8 @@ function UpdateSettingsForm() {
 
     if (!value) return;
 
+    console.log("blur");
+
     updateSetting({ [field]: value });
   };
 
@@ -30,6 +32,7 @@ function UpdateSettingsForm() {
     <Form>
       <FormRowValid label="Minimum nights/booking">
         <Input
+          disabled={isSettingsLoading}
           type="number"
           id="min-nights"
           defaultValue={minBookingLength}
