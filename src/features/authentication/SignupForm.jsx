@@ -1,36 +1,83 @@
+import { useForm } from "react-hook-form";
 import Button from "../../ui/Button";
 import Form from "../../ui/Form";
-import FormRow from "../../ui/FormRow";
+import FormRowValid from "../../ui/FormRowValid";
 import Input from "../../ui/Input";
 
 // Email regex: /\S+@\S+\.\S+/
 
 function SignupForm() {
+  const { register, handleSubmit, formState, getValues } = useForm();
+
+  const { errors } = formState;
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
-    <Form>
-      <FormRow label="Full name" error={""}>
-        <Input type="text" id="fullName" />
-      </FormRow>
+    <Form onSubmit={handleSubmit(onSubmit)}>
+      <FormRowValid label="Full name" error={errors?.fullName?.message}>
+        <Input
+          type="text"
+          id="fullName"
+          {...register("fullName", { required: "This field is required." })}
+        />
+      </FormRowValid>
 
-      <FormRow label="Email address" error={""}>
-        <Input type="email" id="email" />
-      </FormRow>
+      <FormRowValid label="Email address" error={errors?.email?.message}>
+        <Input
+          type="email"
+          id="email"
+          {...register("email", {
+            required: "This field is required.",
+            pattern: {
+              value: /\S+@\S+\.\S+/,
+              message: "Provide a valid email address",
+            },
+          })}
+        />
+      </FormRowValid>
 
-      <FormRow label="Password (min 8 characters)" error={""}>
-        <Input type="password" id="password" />
-      </FormRow>
+      <FormRowValid
+        label="Password (min 8 characters)"
+        error={errors?.password?.message}
+      >
+        <Input
+          type="password"
+          id="password"
+          {...register("password", {
+            required: "This field is required.",
+            minLength: {
+              value: 8,
+              message: "Password should be 8 characters",
+            },
+          })}
+        />
+      </FormRowValid>
 
-      <FormRow label="Repeat password" error={""}>
-        <Input type="password" id="passwordConfirm" />
-      </FormRow>
+      <FormRowValid
+        label="Repeat password"
+        error={errors?.passwordConfirm?.message}
+      >
+        <Input
+          type="password"
+          id="passwordConfirm"
+          {...register("passwordConfirm", {
+            required: "This field is required.",
+            validate: (value) =>
+              value === getValues().password || "Passwords should match",
+          })}
+        />
+      </FormRowValid>
 
-      <FormRow>
+      <FormRowValid>
         {/* type is an HTML attribute! */}
         <Button variation="secondary" type="reset">
           Cancel
         </Button>
         <Button>Create new user</Button>
-      </FormRow>
+      </FormRowValid>
     </Form>
   );
 }
