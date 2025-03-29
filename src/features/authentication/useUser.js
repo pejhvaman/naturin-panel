@@ -10,6 +10,7 @@ function useUser() {
   console.log(userData);
 
   return {
+    userData,
     isLoading,
     isAuthenticated: userData?.role === "authenticated",
   };
