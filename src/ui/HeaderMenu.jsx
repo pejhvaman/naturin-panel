@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Logout from "../features/authentication/Logout";
 import ButtonIcon from "./ButtonIcon";
-import { GoPeople } from "react-icons/go";
+import { GoPerson } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 
 const StyledHeaderMenu = styled.ul`
@@ -15,7 +15,7 @@ function HeaderMenu() {
     <StyledHeaderMenu>
       <li>
         <ButtonIcon onClick={() => navigate("/account")}>
-          <GoPeople />
+          <GoPerson />
         </ButtonIcon>
       </li>
       <li>
