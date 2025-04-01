@@ -7,8 +7,6 @@ function useUser() {
     queryFn: getCurrentUser,
   });
 
-  console.log(userData);
-
   return {
     userData,
     isLoading,

@@ -136,6 +136,7 @@ function Uploader() {
         display: "flex",
         flexDirection: "column",
         gap: "8px",
+        color: "var(--color-grey-400)",
       }}
     >
       <h3>SAMPLE DATA</h3>
