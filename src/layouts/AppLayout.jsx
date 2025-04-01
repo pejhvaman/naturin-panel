@@ -6,7 +6,7 @@ import styled from "styled-components";
 const StyledAppLayout = styled.div`
   height: 100vh;
   transition: all 0.3s;
-
+  overflow-y: hidden;
   display: grid;
 
   grid-template-columns: 1fr;
@@ -19,7 +19,7 @@ const StyledAppLayout = styled.div`
 const Main = styled.main`
   padding: 4rem 4.6rem;
   background-color: var(--color-grey-50);
-  overflow-y: scroll;
+  overflow-y: auto;
 
   width: 100%;
   @media (min-width: 768px) {

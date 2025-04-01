@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import Logout from "../features/authentication/Logout";
 import ButtonIcon from "./ButtonIcon";
-import { GoPeople } from "react-icons/go";
+import { GoPerson } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
+import DarkModeToggle from "./DarkModeToggle";
 
 const StyledHeaderMenu = styled.ul`
   display: flex;
@@ -15,8 +16,11 @@ function HeaderMenu() {
     <StyledHeaderMenu>
       <li>
         <ButtonIcon onClick={() => navigate("/account")}>
-          <GoPeople />
+          <GoPerson />
         </ButtonIcon>
+      </li>
+      <li>
+        <DarkModeToggle />
       </li>
       <li>
         <Logout />
