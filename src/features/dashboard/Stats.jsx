@@ -1,4 +1,4 @@
-import { GoBook } from "react-icons/go";
+import { GoBook, GoChecklist, GoGraph, GoLog } from "react-icons/go";
 import Stat from "./Stat";
 import { formatCurrency } from "../../utils/helpers";
 
@@ -23,16 +23,21 @@ function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
       />
       <Stat
         title="Sales"
-        icon={<GoBook />}
-        color="blue"
+        icon={<GoLog />}
+        color="green"
         value={formatCurrency(sales)}
       />
-      <Stat title="Checkins" icon={<GoBook />} color="blue" value={checkins} />
       <Stat
-        title="Occupation"
-        icon={<GoBook />}
-        color="blue"
-        value={Math.round(occupation * 100)}
+        title="Check ins"
+        icon={<GoChecklist />}
+        color="indigo"
+        value={checkins}
+      />
+      <Stat
+        title="Occupancy rate"
+        icon={<GoGraph />}
+        color="yellow"
+        value={Math.round(occupation * 100) + "%"}
       />
     </>
   );

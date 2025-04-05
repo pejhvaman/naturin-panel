@@ -8,7 +8,6 @@ const StyledSidebar = styled.aside`
   padding: 2rem;
   background-color: var(--color-grey-0);
   border-right: 1px solid var(--color-grey-100);
-
   grid-row: -1;
   transform: translateX(-100%);
   @media (min-width: 768px) {
