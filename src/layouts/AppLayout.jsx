@@ -25,6 +25,8 @@ const Main = styled.main`
   @media (min-width: 768px) {
     /* width: calc(100% - 26rem); */
   }
+
+  min-height: 100vh;
 `;
 
 function AppLayout() {
