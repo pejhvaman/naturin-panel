@@ -5,13 +5,19 @@ import Spinner from "../../ui/Spinner";
 import Stats from "./Stats";
 import SalesChart from "./SalesChart";
 import { useCabins } from "../cabins/useCabins";
+import DurationChart from "./DurationChart";
 
 const StyledDashboardLayout = styled.div`
   margin: 2rem 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto auto auto;
   gap: 2rem;
+`;
+
+const StyledStaysSummary = styled.div`
+  grid-column: 1/-1;
+  display: flex;
 `;
 
 function DashboardLayout() {
@@ -36,8 +42,10 @@ function DashboardLayout() {
         numDays={numDays}
         cabinCount={cabins.length}
       />
-      <div>today&apos;s staty</div>
-      <div>chart stay duration</div>
+      <StyledStaysSummary>
+        <div style={{ width: "40%" }}>today&apos;s staty</div>
+        <DurationChart confirmedStays={confirmedStays} />
+      </StyledStaysSummary>
       <SalesChart bookings={bookings} numDays={numDays} />
     </StyledDashboardLayout>
   );
