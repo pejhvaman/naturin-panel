@@ -4,9 +4,9 @@ import Sidebar from "../ui/Sidebar";
 import styled from "styled-components";
 
 const StyledAppLayout = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   transition: all 0.3s;
-  overflow-y: hidden;
+  overflow-y: auto;
   display: grid;
 
   grid-template-columns: 1fr;
@@ -19,14 +19,11 @@ const StyledAppLayout = styled.div`
 const Main = styled.main`
   padding: 4rem 4.6rem;
   background-color: var(--color-grey-50);
-  overflow-y: auto;
+  /* overflow: auto; */
 
   width: 100%;
-  @media (min-width: 768px) {
-    /* width: calc(100% - 26rem); */
-  }
-
   min-height: 100vh;
+  max-height: fit-content;
 `;
 
 function AppLayout() {

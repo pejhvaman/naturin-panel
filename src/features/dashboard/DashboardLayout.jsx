@@ -6,6 +6,7 @@ import Stats from "./Stats";
 import SalesChart from "./SalesChart";
 import { useCabins } from "../cabins/useCabins";
 import DurationChart from "./DurationChart";
+import TodayActivity from "../check-in-out/TodayActivity";
 
 const StyledDashboardLayout = styled.div`
   margin: 2rem 0;
@@ -17,7 +18,11 @@ const StyledDashboardLayout = styled.div`
 
 const StyledStaysSummary = styled.div`
   grid-column: 1/-1;
-  display: flex;
+  gap: 2rem;
+
+  @media (min-width: 1024px) {
+    display: flex;
+  }
 `;
 
 function DashboardLayout() {
@@ -43,7 +48,7 @@ function DashboardLayout() {
         cabinCount={cabins.length}
       />
       <StyledStaysSummary>
-        <div style={{ width: "40%" }}>today&apos;s staty</div>
+        <TodayActivity />
         <DurationChart confirmedStays={confirmedStays} />
       </StyledStaysSummary>
       <SalesChart bookings={bookings} numDays={numDays} />
