@@ -10,9 +10,8 @@ import { useBookings } from "./useBookings";
 function BookingTable() {
   const { bookings, isBookingsLoading, count } = useBookings();
 
-  if (isBookingsLoading) return <Spinner />;
-
   if (!bookings.length || !bookings) return <Empty resourceName="Bookings" />;
+  if (isBookingsLoading) return <Spinner />;
 
   return (
     <Menus>
