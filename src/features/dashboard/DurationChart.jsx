@@ -15,8 +15,7 @@ const ChartBox = styled.div`
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
-  width: 100%;
-  padding: 2.4rem 3.2rem;
+  padding: 1rem 0;
 
   & > *:first-child {
     margin-bottom: 1.6rem;
@@ -24,6 +23,14 @@ const ChartBox = styled.div`
 
   & .recharts-pie-label-text {
     font-weight: 600;
+  }
+
+  & > h2 {
+    padding: 1rem 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    width: 50%;
   }
 `;
 
@@ -154,8 +161,8 @@ function DurationChart({ confirmedStays }) {
             data={data}
             nameKey="duration"
             dataKey="value"
-            innerRadius={85}
-            outerRadius={112}
+            innerRadius={65}
+            outerRadius={100}
             cx="50%"
             cy="50%"
             paddingAngle={3}
