@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../ui/Button";
 import Form from "../../ui/Form";
 import Input from "../../ui/Input";
 import FormRowVertical from "../../ui/FormRowVertical";
 import SpinnerMini from "../../ui/SpinnerMini";
 import useLogin from "./useLogin";
+import toast from "react-hot-toast";
 
 function LoginForm() {
-  const [email, setEmail] = useState("pezhwa@gmail.com");
-  const [password, setPassword] = useState("12345678");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const { login, isLoggingIn } = useLogin();
 
@@ -21,12 +22,16 @@ function LoginForm() {
       { email, password },
       {
         onSettled: () => {
-          setEmail("pezhwa@gmail.com");
-          setPassword("12345678");
+          setEmail("");
+          setPassword("");
         },
       }
     );
   }
+
+  useEffect(() => {
+    toast.error("Contact me for credentialS!");
+  }, []);
 
   return (
     <Form onSubmit={handleSubmit}>
