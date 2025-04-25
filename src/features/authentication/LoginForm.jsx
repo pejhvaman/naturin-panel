@@ -30,7 +30,7 @@ function LoginForm() {
   }
 
   useEffect(() => {
-    toast.error("Contact me for credentialS!");
+    toast.error("Contact me for credentials!");
   }, []);
 
   return (
