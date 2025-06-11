@@ -5,6 +5,7 @@ function useClickOutside(handler, listenCapturing = true) {
 
   useEffect(() => {
     const handleClick = (e) => {
+      // if an open ref exist and it is not a click target:
       if (ref.current && !ref.current.contains(e.target)) {
         handler();
       }

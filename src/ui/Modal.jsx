@@ -57,6 +57,7 @@ const Button = styled.button`
 const ModalContext = createContext();
 
 function Modal({ children }) {
+  // to track for which part, this modal is open:
   const [openName, setOpenName] = useState("");
 
   const close = () => setOpenName("");
@@ -71,18 +72,21 @@ function Modal({ children }) {
 }
 
 function Open({ children, opens: openWindowName }) {
+  // open is the setter function of the current part that the modal is open for, and frst we click this ot open a modal
   const { open } = useContext(ModalContext);
 
+  // cloneElement(element, props, ...children)->uncommon and to create a react element using another element as a start point
   return cloneElement(children, { onClick: () => open(openWindowName) });
 }
 
 function Window({ children, name }) {
-  const { openName, close } = useContext(ModalContext);
+  const { openName, close } = useContext(ModalContext); // name is the part name that we pass to this component when we call it, and it should be the same as the currently open part(openName)
 
   const ref = useClickOutside(close);
 
   if (name !== openName) return null;
 
+  // createPortal: to render a element outside of the parent's DOM structure but keeping it in the same position in the component tree, to avoid css conflicts with overflow:hidden in the parent (usefull for modals, menus, tooltips...)
   return createPortal(
     <Overlay>
       <StyledModal ref={ref}>
@@ -92,7 +96,7 @@ function Window({ children, name }) {
         <div>{cloneElement(children, { onCloseModal: close })}</div>
       </StyledModal>
     </Overlay>,
-    document.body
+    document.body // DOM node we want to render this JSX in first arg
   );
 }
 
