@@ -68,8 +68,8 @@ const StyledButton = styled.button`
 const MenusContext = createContext();
 
 function Menus({ children }) {
-  const [openId, setOpenId] = useState("");
-  const [position, setPosition] = useState(null);
+  const [openId, setOpenId] = useState(""); // to track for which row the menu is open
+  const [position, setPosition] = useState(null); // to set the popup menu position
 
   const close = () => setOpenId("");
   const open = setOpenId;
@@ -87,9 +87,9 @@ function Toggle({ id }) {
   const { openId, setPosition, open, close } = useContext(MenusContext);
 
   const handleClick = (e) => {
-    e.stopPropagation();
+    e.stopPropagation(); //to stop bubbling (to stop closing the menu or modal that is being portal) (in the useClickOutside we used capturing in bubbling phase for this compound components)
 
-    const rect = e.target.closest("button").getBoundingClientRect();
+    const rect = e.target.closest("button").getBoundingClientRect(); // closest button is itself!
 
     setPosition({
       x: window.innerWidth - rect.width - rect.x,
@@ -125,7 +125,7 @@ function Button({ children, onClick, icon }) {
   const { close } = useContext(MenusContext);
 
   const handleClick = () => {
-    onClick?.();
+    onClick?.(); // to perform an action when it's needed
     close();
   };
 
