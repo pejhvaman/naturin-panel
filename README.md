@@ -17,6 +17,8 @@
 
 ## 🛠️ Upcoming Enhancements
 
+- 🎛️ Allowing multiple filters at the same time
+- 📋 Adding users table in users page to manage them by the hotel's staff
 - ✨ Create new bookings from the admin panel
 - 🛠️ Edit and update existing bookings
 - 💰 Adjust the price of each room or cabin for individual dates
