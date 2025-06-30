@@ -10,18 +10,15 @@ import TodayActivity from "../check-in-out/TodayActivity";
 
 const StyledDashboardLayout = styled.div`
   margin: 2rem 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto auto;
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
 `;
 
 const StyledStaysSummary = styled.div`
-  grid-column: 1/-1;
-  gap: 2rem;
-
   @media (min-width: 1024px) {
     display: flex;
+    gap: 2rem;
   }
 `;
 

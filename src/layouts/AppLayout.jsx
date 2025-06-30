@@ -27,7 +27,12 @@ const Main = styled.main`
 `;
 
 const OutletLayout = styled.div`
-  padding: 4rem 4.6rem;
+  padding: 2rem 1rem;
+  overflow-x: hidden;
+
+  @media (width>=768px) {
+    padding: 4rem;
+  }
 `;
 
 function AppLayout() {

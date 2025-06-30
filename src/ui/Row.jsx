@@ -8,6 +8,10 @@ const Row = styled.div`
     css`
       align-items: center;
       justify-content: space-between;
+
+      @media (width<=576px) {
+        flex-direction: column;
+      }
     `}
 
   ${({ type = "vertical" }) =>

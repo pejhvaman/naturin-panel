@@ -1,6 +1,20 @@
 import { GoBook, GoChecklist, GoGraph, GoLog } from "react-icons/go";
 import Stat from "./Stat";
 import { formatCurrency } from "../../utils/helpers";
+import styled from "styled-components";
+
+const StyledStatLayout = styled.div`
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @media (576px <= width < 768px), (width > 992px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+`;
 
 function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
   const numBookings = bookings.length;
@@ -14,7 +28,7 @@ function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
     (numDays * cabinCount);
 
   return (
-    <>
+    <StyledStatLayout>
       <Stat
         title="Bookings"
         icon={<GoBook />}
@@ -39,7 +53,7 @@ function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
         color="yellow"
         value={Math.round(occupation * 100) + "%"}
       />
-    </>
+    </StyledStatLayout>
   );
 }
 
