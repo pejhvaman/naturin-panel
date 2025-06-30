@@ -4,12 +4,11 @@ import LoginForm from "../features/authentication/LoginForm";
 import styled from "styled-components";
 
 const LoginLayout = styled.main`
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 36rem;
-  align-content: center;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 3.2rem;
+  align-items: center;
   background-color: var(--color-grey-50);
 `;
 
@@ -17,7 +16,7 @@ function Login() {
   return (
     <LoginLayout>
       <Logo />
-      <Heading as="h1">Log in to your account</Heading>
+      <Heading as="h2">Log in to your account</Heading>
       <LoginForm />
     </LoginLayout>
   );
