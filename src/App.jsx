@@ -18,6 +18,7 @@ import Booking from "./features/bookings/Booking";
 import Checkin from "./pages/Checkin";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import { DarkModeProvider } from "./context/DarkModeContext";
+import { MenuToggleProvider } from "./context/MenuToggleContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -38,7 +39,9 @@ function App() {
             <Route
               element={
                 <ProtectedRoute>
-                  <AppLayout />
+                  <MenuToggleProvider>
+                    <AppLayout />
+                  </MenuToggleProvider>
                 </ProtectedRoute>
               }
             >

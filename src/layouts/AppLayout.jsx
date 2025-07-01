@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Header from "../ui/Header";
 import Sidebar from "../ui/Sidebar";
 import styled from "styled-components";
+import { useToggleMenu } from "../context/MenuToggleContext";
 
 const StyledAppLayout = styled.div`
   min-height: 100svh;
@@ -14,15 +15,22 @@ const StyledAppLayout = styled.div`
 
 const Main = styled.main`
   background-color: var(--color-grey-50);
-  width: 100%;
   min-height: 100svh;
   max-height: fit-content;
-
   display: flex;
   flex-direction: column;
 
-  @media (min-width: 768px) {
-    width: calc(100% - 300px);
+  @media (width<=768px) {
+    width: ${({ isOpen }) => (isOpen ? "100%" : "100%")};
+  }
+
+  @media (width > 768px) {
+    width: ${({ isOpen }) => (isOpen ? "calc(100% - 300px)" : "100%")};
+  }
+
+  @media (width > 1024px) {
+    width: ${({ isOpen }) =>
+      isOpen ? "calc(100% - 300px)" : "calc(100% - 300px)"};
   }
 `;
 
@@ -36,10 +44,12 @@ const OutletLayout = styled.div`
 `;
 
 function AppLayout() {
+  const { isOpen } = useToggleMenu();
+
   return (
     <StyledAppLayout>
       <Sidebar />
-      <Main>
+      <Main isOpen={isOpen}>
         <Header />
         <OutletLayout>
           <Outlet />

@@ -4,6 +4,8 @@ import Logo from "../ui/Logo";
 import MainNav from "../ui/MainNav";
 import Uploader from "../data/Uploader";
 
+import { useToggleMenu } from "../context/MenuToggleContext";
+
 const StyledSidebar = styled.aside`
   padding: 2rem;
   background-color: var(--color-grey-0);
@@ -13,20 +15,31 @@ const StyledSidebar = styled.aside`
   left: 0;
   height: 100svh;
   z-index: 100;
-  transform: translateX(-100%);
-
-  @media (min-width: 768px) {
-    transform: translateX(0);
-  }
-
   display: flex;
   flex-direction: column;
   gap: 3rem;
+
+  @media (width <=768px) {
+    transform: ${({ isOpen }) =>
+      isOpen ? "translateX(0)" : "translateX(-100%)"};
+  }
+
+  @media (width > 768px) {
+    transform: ${({ isOpen }) =>
+      isOpen ? "translateX(0)" : "translateX(-100%)"};
+  }
+
+  @media (width > 1024px) {
+    transform: ${({ isOpen }) => (isOpen ? "translateX(0)" : "translateX(0)")};
+  }
 `;
 
+//TODO: add a button to close sidebar in small viewports
 function Sidebar() {
+  const { isOpen } = useToggleMenu();
+
   return (
-    <StyledSidebar>
+    <StyledSidebar isOpen={isOpen}>
       <Logo />
       <MainNav />
 
