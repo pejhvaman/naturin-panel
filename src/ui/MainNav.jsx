@@ -8,6 +8,7 @@ import {
 } from "react-icons/go";
 
 import styled from "styled-components";
+import { useToggleMenu } from "../context/MenuToggleContext";
 
 const NavList = styled.ul`
   display: flex;
@@ -55,34 +56,36 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 function MainNav() {
+  const { close } = useToggleMenu();
+
   return (
     <nav>
       <NavList>
-        <li>
+        <li onClick={close}>
           <StyledNavLink to="/dashboard">
             <GoHome />
             <span>Home</span>
           </StyledNavLink>
         </li>
-        <li>
+        <li onClick={close}>
           <StyledNavLink to="/bookings">
             <GoProjectSymlink />
             <span>Bookings</span>
           </StyledNavLink>
         </li>
-        <li>
+        <li onClick={close}>
           <StyledNavLink to="/cabins">
             <GoPackage />
             <span>Cabbins</span>
           </StyledNavLink>
         </li>
-        <li>
+        <li onClick={close}>
           <StyledNavLink to="/users">
             <GoPeople />
             <span>Users</span>
           </StyledNavLink>
         </li>
-        <li>
+        <li onClick={close}>
           <StyledNavLink to="/settings">
             <GoGear />
             <span>Settings</span>
