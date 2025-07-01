@@ -12,15 +12,15 @@ const StyledToday = styled.div`
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
 
-  padding: 3.2rem;
+  padding: 0.2rem;
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
   grid-column: 1 / span 2;
   padding-top: 2.4rem;
 
-  @media (min-width: 1024px) {
-    width: 50%;
+  @media (min-width: 567px) {
+    padding: 1rem;
   }
 `;
 
@@ -49,7 +49,9 @@ function Today() {
   return (
     <StyledToday>
       <Row type="horizontal">
-        <Heading as="h2">Today</Heading>
+        <Heading style={{ margin: "0 auto" }} as="h2">
+          Today
+        </Heading>
       </Row>
       {!isLoading ? (
         activities?.length > 0 ? (

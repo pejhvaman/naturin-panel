@@ -6,10 +6,11 @@ import CheckoutButton from "./CheckoutButton";
 import { Link } from "react-router-dom";
 
 const StyledTodayItem = styled.li`
+  width: 100%;
   display: grid;
-  grid-template-columns: 9rem 2rem 1fr 7rem;
-  grid-template-rows: 2rem;
-  gap: 1.2rem;
+  grid-template-columns: 2fr 1fr 8fr 2fr;
+  grid-template-rows: auto;
+  gap: 0.8rem;
   align-items: center;
 
   font-size: 1.4rem;
@@ -19,15 +20,13 @@ const StyledTodayItem = styled.li`
   &:first-child {
     border-top: 1px solid var(--color-grey-100);
   }
-
-  @media (max-width: 1024px) {
-    grid-template-columns: 9rem 2rem 1fr 7rem 9rem;
-    grid-template-rows: none;
-  }
 `;
 
 const Guest = styled.div`
+  text-align: center;
   font-weight: 500;
+  overflow-wrap: break-word;
+  overflow: hidden;
 `;
 
 function TodayItem({ activity }) {
@@ -40,7 +39,7 @@ function TodayItem({ activity }) {
 
       <Flag src={guests.countryFlag} alt={`Flag of ${guests.country}`} />
       <Guest>{guests.fullName}</Guest>
-      <div>{numNights} nights</div>
+      <div style={{ textAlign: "center" }}>{numNights} nights</div>
 
       {status === "unconfirmed" && (
         <Button
