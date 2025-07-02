@@ -5,6 +5,8 @@ import MainNav from "../ui/MainNav";
 import Uploader from "../data/Uploader";
 
 import { useToggleMenu } from "../context/MenuToggleContext";
+import ButtonIcon from "./ButtonIcon";
+import { GoListUnordered, GoX } from "react-icons/go";
 
 const StyledSidebar = styled.aside`
   padding: 2rem;
@@ -34,12 +36,25 @@ const StyledSidebar = styled.aside`
   }
 `;
 
-//TODO: add a button to close sidebar in small viewports
+const SidebarToggleButton = styled.div`
+  text-align: right;
+  /* display: block; */
+
+  @media (width>=768px) {
+    opacity: 0;
+  }
+`;
+
 function Sidebar() {
-  const { isOpen } = useToggleMenu();
+  const { isOpen, toggle } = useToggleMenu();
 
   return (
     <StyledSidebar isOpen={isOpen}>
+      <SidebarToggleButton>
+        <ButtonIcon onClick={toggle}>
+          {isOpen ? <GoX /> : <GoListUnordered />}
+        </ButtonIcon>
+      </SidebarToggleButton>
       <Logo />
       <MainNav />
 
