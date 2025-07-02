@@ -16,22 +16,30 @@ const ChartBox = styled.div`
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
   padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 
   & > *:first-child {
     margin-bottom: 1.6rem;
   }
 
-  & .recharts-pie-label-text {
+  & .recharts-legend-item {
     font-weight: 600;
+    font-size: 1.4rem;
+
+    @media (width>=768px) {
+      font-size: 1.8rem;
+    }
   }
 
   & > h2 {
-    padding: 1rem 2rem;
+    text-align: center;
   }
+  width: 100%;
 
-  @media (min-width: 1024px) {
-    width: 50%;
-  }
+  /* @media (min-width: 1024px) {
+  } */
 `;
 
 const startDataLight = [
@@ -162,7 +170,7 @@ function DurationChart({ confirmedStays }) {
             nameKey="duration"
             dataKey="value"
             innerRadius={65}
-            outerRadius={100}
+            outerRadius={85}
             cx="50%"
             cy="50%"
             paddingAngle={3}
