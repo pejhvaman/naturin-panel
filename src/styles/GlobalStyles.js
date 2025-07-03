@@ -17,13 +17,13 @@ const GlobalStyles = createGlobalStyle`
 
     --color-teal-100: #ccfbf1;
     --color-teal-700: #0f766e;
-    --color-orange-100: #ffedd5;
+    --color-orange-100:rgb(250, 212, 162);
     --color-orange-700: #c2410c;
     --color-green-100: #dcfce7;
     --color-green-700: #15803d;
     --color-yellow-100: #fef9c3;
     --color-yellow-700: #a16207;
-    --color-silver-100: #e5e7eb;
+    --color-silver-100:rgb(190, 194, 201);
     --color-silver-700: #374151;
     --color-purple-100: #f3e8ff;
     --color-purple-700: #7e22ce;

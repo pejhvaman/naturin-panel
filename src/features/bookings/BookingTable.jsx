@@ -6,6 +6,12 @@ import Empty from "../../ui/Empty";
 import Spinner from "../../ui/Spinner";
 import Pagination from "../../ui/Pagination";
 import { useBookings } from "./useBookings";
+import styled from "styled-components";
+
+const TableContainer = styled.div`
+  width: 100%;
+  overflow-x: auto;
+`;
 
 function BookingTable() {
   const { bookings, isBookingsLoading, count } = useBookings();
@@ -16,27 +22,29 @@ function BookingTable() {
 
   return (
     <Menus>
-      <Table columns="0.6fr 2fr 2.4fr 1.4fr 1fr 3.2rem">
-        <Table.Header>
-          <div>Cabin</div>
-          <div>Guest</div>
-          <div>Dates</div>
-          <div>Status</div>
-          <div>Amount</div>
-          <div></div>
-        </Table.Header>
+      <TableContainer>
+        <Table columns="0.6fr 2fr 2.4fr 1.4fr 1fr 0.2fr">
+          <Table.Header>
+            <div>Cabin</div>
+            <div>Guest</div>
+            <div>Dates</div>
+            <div>Status</div>
+            <div>Amount</div>
+            <div></div>
+          </Table.Header>
 
-        <Table.Body
-          data={bookings}
-          render={(booking) => (
-            <BookingRow key={booking.id} booking={booking} />
-          )}
-        />
-      </Table>
+          <Table.Body
+            data={bookings}
+            render={(booking) => (
+              <BookingRow key={booking.id} booking={booking} />
+            )}
+          />
+        </Table>
 
-      <Table.Footer>
-        <Pagination count={count} />
-      </Table.Footer>
+        <Table.Footer>
+          <Pagination count={count} />
+        </Table.Footer>
+      </TableContainer>
     </Menus>
   );
 }

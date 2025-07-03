@@ -26,6 +26,10 @@ const Stacked = styled.div`
   flex-direction: column;
   gap: 0.2rem;
 
+  & span {
+    overflow-wrap: break-word;
+  }
+
   & span:first-child {
     font-weight: 500;
   }
@@ -33,6 +37,13 @@ const Stacked = styled.div`
   & span:last-child {
     color: var(--color-grey-500);
     font-size: 1.2rem;
+  }
+`;
+
+const Email = styled.span`
+  max-width: 6rem;
+  @media (width>567px) {
+    max-width: 12rem;
   }
 `;
 
@@ -62,7 +73,7 @@ function BookingRow({
   const { deleteBooking, isDeleting } = useDeleteBooking();
 
   const statusToTagName = {
-    unconfirmed: "blue",
+    unconfirmed: "orange",
     "checked-in": "green",
     "checked-out": "silver",
   };
@@ -73,7 +84,7 @@ function BookingRow({
 
       <Stacked>
         <span>{guestName}</span>
-        <span>{email}</span>
+        <Email>{email}</Email>
       </Stacked>
 
       <Stacked>

@@ -36,7 +36,7 @@ const FilterButton = styled.button`
   }
 
   @media (width>=768px) {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 `;
 
