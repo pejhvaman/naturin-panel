@@ -9,6 +9,7 @@ import {
 import styled from "styled-components";
 import Heading from "../../ui/Heading";
 import { useDarkMode } from "../../context/DarkModeContext";
+import { useEffect, useRef, useState } from "react";
 
 const ChartBox = styled.div`
   /* Box */
@@ -89,7 +90,7 @@ const startDataDark = [
   {
     duration: "1 night",
     value: 0,
-    color: "#b91c1c",
+    color: "#991b1b",
   },
   {
     duration: "2 nights",
@@ -160,17 +161,34 @@ function DurationChart({ confirmedStays }) {
   const startData = isDarkMode ? startDataDark : startDataLight;
   const data = prepareData(startData, confirmedStays);
 
+  const containerRef = useRef(null);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const observer = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        setWidth(entry.contentRect.width);
+      }
+    });
+
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const innerRadius = width < 400 ? 55 : width < 768 ? 85 : 125;
+  const outerRadius = width < 400 ? 75 : width < 768 ? 125 : 145;
+
   return (
-    <ChartBox>
+    <ChartBox ref={containerRef}>
       <Heading as="h2">Stay duration summary</Heading>
-      <ResponsiveContainer width="100%" height={240}>
+      <ResponsiveContainer width="100%" height={260}>
         <PieChart>
           <Pie
             data={data}
             nameKey="duration"
             dataKey="value"
-            innerRadius={65}
-            outerRadius={85}
+            innerRadius={innerRadius}
+            outerRadius={outerRadius}
             cx="50%"
             cy="50%"
             paddingAngle={3}

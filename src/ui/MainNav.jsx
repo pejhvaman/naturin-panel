@@ -26,7 +26,7 @@ const StyledNavLink = styled(NavLink)`
     color: var(--color-grey-600);
     font-size: 1.6rem;
     font-weight: 500;
-    padding: 1.2rem 2.4rem;
+    padding: 1rem 2.4rem;
     transition: all 0.3s;
   }
 

@@ -9,7 +9,7 @@ import { useDeleteCabin } from "./useDeleteCabin";
 import { useCreateCabin } from "./useCreateCabin";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
-import Table from "../../ui/Table";
+import CabinsTable from "../../ui/CabinsTable";
 import Menus from "../../ui/Menus";
 
 const Img = styled.img`
@@ -73,7 +73,7 @@ function CabinRow({ cabin }) {
   };
 
   return (
-    <Table.Row>
+    <CabinsTable.Row>
       <Img src={image || "./image"} />
       <Cabin>{name}</Cabin>
       <div>Fit up to {maxCapacity} guests</div>
@@ -114,7 +114,7 @@ function CabinRow({ cabin }) {
           </Modal.Window>
         </Menus.Menu>
       </Modal>
-    </Table.Row>
+    </CabinsTable.Row>
   );
 }
 

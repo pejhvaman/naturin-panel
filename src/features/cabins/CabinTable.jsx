@@ -1,7 +1,7 @@
 import Spinner from "../../ui/Spinner";
 import CabinRow from "./CabinRow";
 import { useCabins } from "./useCabins";
-import Table from "../../ui/Table";
+import CabinsTable from "../../ui/CabinsTable";
 import Menus from "../../ui/Menus";
 import { useSearchParams } from "react-router-dom";
 import Empty from "../../ui/Empty";
@@ -35,20 +35,20 @@ function CabinTable() {
 
   return (
     <Menus>
-      <Table columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
-        <Table.Header>
+      <CabinsTable columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
+        <CabinsTable.Header>
           <div></div>
           <div>Cabin</div>
           <div>Capacity</div>
           <div>Price</div>
           <div>Discount</div>
           <div></div>
-        </Table.Header>
-        <Table.Body
+        </CabinsTable.Header>
+        <CabinsTable.Body
           data={sortedCabins}
           render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
-        ></Table.Body>
-      </Table>
+        ></CabinsTable.Body>
+      </CabinsTable>
     </Menus>
   );
 }

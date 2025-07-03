@@ -134,12 +134,14 @@ function Uploader() {
         textAlign: "center",
         display: "flex",
         flexDirection: "column",
-        gap: "8px",
+        gap: "4px",
         color: "var(--color-grey-400)",
-        marginTop: "2rem",
+        width: "70%",
+        marginInline: "auto",
+        marginTop: "auto",
       }}
     >
-      <h3>SAMPLE DATA</h3>
+      <h4>SAMPLE DATA</h4>
 
       <Button onClick={uploadAll} disabled={isLoading}>
         Upload ALL

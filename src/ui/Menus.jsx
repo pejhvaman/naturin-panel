@@ -101,7 +101,7 @@ function Toggle({ id }) {
 
   return (
     <StyledToggle onClick={handleClick}>
-      <GoKebabHorizontal />
+      <GoKebabHorizontal style={{ width: "2rem" }} />
     </StyledToggle>
   );
 }
