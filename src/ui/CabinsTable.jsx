@@ -4,58 +4,36 @@ import styled from "styled-components";
 const StyledTable = styled.div`
   border: 1px solid var(--color-grey-200);
 
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   background-color: var(--color-grey-0);
   border-radius: 7px;
-  width: 100%;
+  overflow: hidden;
 `;
 
 const CommonRow = styled.div`
   display: grid;
   grid-template-columns: ${(props) => props.$columns};
-  column-gap: 1rem;
+  column-gap: 2.4rem;
   align-items: center;
   transition: none;
-  padding: 1.2rem;
-
-  @media (width<567px) {
-    /* padding-right: 0.5rem; */
-    & div:nth-child(1),
-    & div:nth-child(5) {
-      display: none;
-    }
-
-    & div:nth-child(3) {
-      min-width: 10rem;
-    }
-    & div:nth-child(6) {
-      max-width: 1.75rem;
-    }
-  }
 `;
 
 const StyledHeader = styled(CommonRow)`
+  padding: 1.6rem 2.4rem;
+
   background-color: var(--color-grey-50);
   border-bottom: 1px solid var(--color-grey-100);
   text-transform: uppercase;
   letter-spacing: 0.4px;
   font-weight: 600;
   color: var(--color-grey-600);
-
-  @media (width<567px) {
-    grid-template-columns: 3fr 5fr 3fr 0.6fr;
-  }
 `;
 
 const StyledRow = styled(CommonRow)`
-  & div:nth-child(3) {
-  }
+  padding: 1.2rem 2.4rem;
+
   &:not(:last-child) {
     border-bottom: 1px solid var(--color-grey-100);
-  }
-
-  @media (width<567px) {
-    grid-template-columns: 3fr 5fr 3fr 0.6fr;
   }
 `;
 
@@ -82,18 +60,18 @@ const Empty = styled.p`
   margin: 2.4rem;
 `;
 
-const TableContext = createContext();
+const CabinsTableContext = createContext();
 
-function Table({ columns, children }) {
+function CabinsTable({ columns, children }) {
   return (
-    <TableContext.Provider value={{ columns }}>
+    <CabinsTableContext.Provider value={{ columns }}>
       <StyledTable role="table">{children}</StyledTable>
-    </TableContext.Provider>
+    </CabinsTableContext.Provider>
   );
 }
 
 function Header({ children }) {
-  const { columns } = useContext(TableContext);
+  const { columns } = useContext(CabinsTableContext);
 
   return <StyledHeader $columns={columns}>{children}</StyledHeader>;
 }
@@ -105,7 +83,7 @@ function Body({ data, render }) {
 }
 
 function Row({ children }) {
-  const { columns } = useContext(TableContext);
+  const { columns } = useContext(CabinsTableContext);
 
   return (
     <StyledRow role="row" $columns={columns}>
@@ -114,9 +92,9 @@ function Row({ children }) {
   );
 }
 
-Table.Header = Header;
-Table.Body = Body;
-Table.Row = Row;
-Table.Footer = Footer;
+CabinsTable.Header = Header;
+CabinsTable.Body = Body;
+CabinsTable.Row = Row;
+CabinsTable.Footer = Footer;
 
-export default Table;
+export default CabinsTable;

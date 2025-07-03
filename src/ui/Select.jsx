@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StyledSelect = styled.select`
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   padding: 0.8rem 1.2rem;
   border: 1px solid
     ${({ type }) =>
@@ -14,6 +14,15 @@ const StyledSelect = styled.select`
     type === "white" ? "var(--color-grey-800)" : "var(--color-grey-100)"};
   box-shadow: var(--shadow-sm);
   cursor: pointer;
+
+  & option {
+    font-size: 1rem;
+    width: fit-content;
+
+    @media (width>768px) {
+      font-size: 1.2rem;
+    }
+  }
 `;
 
 function Select({ options, value, onChange, ...props }) {
