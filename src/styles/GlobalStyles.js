@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
 
     --color-teal-100: #ccfbf1;
     --color-teal-700: #0f766e;
-    --color-orange-100:rgb(250, 212, 162);
+    --color-orange-100:rgb(231, 185, 124);
     --color-orange-700: #c2410c;
     --color-green-100: #dcfce7;
     --color-green-700: #15803d;
@@ -58,7 +58,7 @@ const GlobalStyles = createGlobalStyle`
     --color-teal-100: #0f766e;
     --color-teal-700: #ccfbf1;
     --color-orange-100: #c2410c;
-    --color-orange-700: #ffedd5;
+    --color-orange-700:rgb(240, 203, 156);
     --color-green-100: #166534;
     --color-green-700: #dcfce7;
     --color-yellow-100: #854d0e;

@@ -50,13 +50,13 @@ function SalesChart({ bookings, numDays }) {
 
   const colors = isDarkMode
     ? {
-        totalSales: { stroke: "#4f46e5", fill: "#4f46e5" },
-        extraSales: { stroke: "#22c55e", fill: "#22c55e" },
+        totalSales: { stroke: "#7e22ce", fill: "#7e22ce" },
+        extraSales: { stroke: "#0d9488", fill: "#0d9488" },
         text: "#e5e7eb",
         background: "#18212f",
       }
     : {
-        totalSales: { stroke: "#4f46e5", fill: "#c7d2fe" },
+        totalSales: { stroke: "#7e22ce", fill: "#ccfbf1" },
         extraSales: { stroke: "#16a34a", fill: "#dcfce7" },
         text: "#374151",
         background: "#fff",
