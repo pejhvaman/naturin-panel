@@ -9,9 +9,9 @@ import ButtonIcon from "./ButtonIcon";
 import { GoListUnordered, GoX } from "react-icons/go";
 
 const StyledSidebar = styled.aside`
-  padding: 2rem;
+  padding: 1rem;
   background-color: var(--color-grey-0);
-  border-right: 1px solid var(--color-grey-100);
+  border-right: 1px solid var(--color-grey-200);
   width: 300px;
   position: fixed;
   left: 0;
@@ -19,7 +19,8 @@ const StyledSidebar = styled.aside`
   z-index: 100;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 1rem;
+  /* overflow-y: scroll; */
 
   @media (width <=768px) {
     transform: ${({ isOpen }) =>
@@ -42,6 +43,7 @@ const SidebarToggleButton = styled.div`
 
   @media (width>=768px) {
     opacity: 0;
+    visibility: hidden;
   }
 `;
 

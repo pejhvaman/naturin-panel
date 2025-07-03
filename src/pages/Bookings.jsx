@@ -7,7 +7,9 @@ function Bookings() {
   return (
     <>
       <Row type="horizontal">
-        <Heading as="h1">All bookings</Heading>
+        <Heading style={{ whiteSpace: "nowrap" }} as="h2">
+          All bookings
+        </Heading>
         <BookingTableOperations />
       </Row>
 
