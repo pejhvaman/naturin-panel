@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 const FormRow = styled.div`
-  display: grid;
-  align-items: center;
-  grid-template-columns: 24rem 1fr 1.2fr;
-  gap: 2.4rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-  padding: 1.2rem 0;
+  gap: 0.5rem;
+
+  padding: 1rem 0;
 
   &:first-child {
     padding-top: 0;
@@ -23,7 +25,11 @@ const FormRow = styled.div`
   &:has(button) {
     display: flex;
     justify-content: flex-end;
-    gap: 1.2rem;
+    gap: 1rem;
+  }
+
+  @media (width>576px) {
+    flex-direction: row;
   }
 `;
 

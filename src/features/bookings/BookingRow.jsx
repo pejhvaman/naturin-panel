@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { format, isToday } from "date-fns";
 
 import Tag from "../../ui/Tag";
-import Table from "../../ui/Table";
+import BookingsTable from "../../ui/BookingsTable";
 import Menus from "../../ui/Menus";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
@@ -79,7 +79,7 @@ function BookingRow({
   };
 
   return (
-    <Table.Row>
+    <BookingsTable.Row>
       <Cabin>{cabinName}</Cabin>
 
       <Stacked>
@@ -146,7 +146,7 @@ function BookingRow({
           />
         </Modal.Window>
       </Modal>
-    </Table.Row>
+    </BookingsTable.Row>
   );
 }
 
