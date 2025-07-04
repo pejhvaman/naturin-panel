@@ -36,6 +36,7 @@ const Main = styled.main`
 
 const OutletLayout = styled.div`
   padding: 2rem 1rem;
+  padding-top: 10rem;
   overflow-x: hidden;
   width: 100%;
   max-width: 140rem;
@@ -43,6 +44,7 @@ const OutletLayout = styled.div`
 
   @media (width>=768px) {
     padding: 4rem;
+    padding-top: 12rem;
   }
 `;
 

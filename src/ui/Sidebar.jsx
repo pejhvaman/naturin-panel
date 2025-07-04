@@ -21,6 +21,7 @@ const StyledSidebar = styled.aside`
   flex-direction: column;
   gap: 1rem;
   /* overflow-y: scroll; */
+  overflow-x: hidden;
 
   @media (width <=768px) {
     transform: ${({ isOpen }) =>

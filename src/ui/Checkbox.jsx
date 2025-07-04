@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 const StyledCheckbox = styled.div`
   display: flex;
-  gap: 1.6rem;
+  align-items: center;
+  gap: 1.4rem;
 
   & input[type="checkbox"] {
     height: 2.4rem;
