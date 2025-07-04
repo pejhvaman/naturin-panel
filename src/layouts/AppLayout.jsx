@@ -16,8 +16,8 @@ const StyledAppLayout = styled.div`
 const Main = styled.main`
   background-color: var(--color-grey-50);
   min-height: 100svh;
-  max-height: fit-content;
   display: flex;
+
   flex-direction: column;
 
   @media (width<=768px) {
@@ -37,6 +37,9 @@ const Main = styled.main`
 const OutletLayout = styled.div`
   padding: 2rem 1rem;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 140rem;
+  margin-inline: auto;
 
   @media (width>=768px) {
     padding: 4rem;

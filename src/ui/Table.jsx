@@ -4,34 +4,19 @@ import styled from "styled-components";
 const StyledTable = styled.div`
   border: 1px solid var(--color-grey-200);
 
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   background-color: var(--color-grey-0);
   border-radius: 7px;
-  width: 100%;
+  overflow: hidden;
 `;
 
 const CommonRow = styled.div`
   display: grid;
   grid-template-columns: ${(props) => props.$columns};
-  column-gap: 1rem;
+  column-gap: 2.4rem;
   align-items: center;
   transition: none;
   padding: 1.2rem;
-
-  @media (width<567px) {
-    /* padding-right: 0.5rem; */
-    & div:nth-child(1),
-    & div:nth-child(5) {
-      display: none;
-    }
-
-    & div:nth-child(3) {
-      min-width: 10rem;
-    }
-    & div:nth-child(6) {
-      max-width: 1.75rem;
-    }
-  }
 `;
 
 const StyledHeader = styled(CommonRow)`
@@ -41,21 +26,11 @@ const StyledHeader = styled(CommonRow)`
   letter-spacing: 0.4px;
   font-weight: 600;
   color: var(--color-grey-600);
-
-  @media (width<567px) {
-    grid-template-columns: 3fr 5fr 3fr 0.6fr;
-  }
 `;
 
 const StyledRow = styled(CommonRow)`
-  & div:nth-child(3) {
-  }
   &:not(:last-child) {
     border-bottom: 1px solid var(--color-grey-100);
-  }
-
-  @media (width<567px) {
-    grid-template-columns: 3fr 5fr 3fr 0.6fr;
   }
 `;
 

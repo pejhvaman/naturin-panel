@@ -4,22 +4,32 @@ import styled from "styled-components";
 const StyledTable = styled.div`
   border: 1px solid var(--color-grey-200);
 
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   background-color: var(--color-grey-0);
   border-radius: 7px;
-  overflow: hidden;
+  width: 100%;
 `;
 
 const CommonRow = styled.div`
   display: grid;
   grid-template-columns: ${(props) => props.$columns};
-  column-gap: 2.4rem;
+  column-gap: 1rem;
   align-items: center;
   transition: none;
   padding: 1.2rem;
 
-  @media (width <=768px) {
-    grid-template-columns: auto auto auto auto;
+  @media (width<567px) {
+    & div:nth-child(1),
+    & div:nth-child(5) {
+      display: none;
+    }
+
+    & div:nth-child(3) {
+      min-width: 10rem;
+    }
+    & div:nth-child(6) {
+      max-width: 1.75rem;
+    }
   }
 `;
 
@@ -30,11 +40,21 @@ const StyledHeader = styled(CommonRow)`
   letter-spacing: 0.4px;
   font-weight: 600;
   color: var(--color-grey-600);
+
+  @media (width<567px) {
+    grid-template-columns: 3fr 5fr 3fr 0.6fr;
+  }
 `;
 
 const StyledRow = styled(CommonRow)`
+  & div:nth-child(3) {
+  }
   &:not(:last-child) {
     border-bottom: 1px solid var(--color-grey-100);
+  }
+
+  @media (width<567px) {
+    grid-template-columns: 3fr 5fr 3fr 0.6fr;
   }
 `;
 
@@ -61,18 +81,18 @@ const Empty = styled.p`
   margin: 2.4rem;
 `;
 
-const CabinsTableContext = createContext();
+const BookingsTableContext = createContext();
 
-function CabinsTable({ columns, children }) {
+function BookingsTable({ columns, children }) {
   return (
-    <CabinsTableContext.Provider value={{ columns }}>
+    <BookingsTableContext.Provider value={{ columns }}>
       <StyledTable role="table">{children}</StyledTable>
-    </CabinsTableContext.Provider>
+    </BookingsTableContext.Provider>
   );
 }
 
 function Header({ children }) {
-  const { columns } = useContext(CabinsTableContext);
+  const { columns } = useContext(BookingsTableContext);
 
   return <StyledHeader $columns={columns}>{children}</StyledHeader>;
 }
@@ -84,7 +104,7 @@ function Body({ data, render }) {
 }
 
 function Row({ children }) {
-  const { columns } = useContext(CabinsTableContext);
+  const { columns } = useContext(BookingsTableContext);
 
   return (
     <StyledRow role="row" $columns={columns}>
@@ -93,9 +113,9 @@ function Row({ children }) {
   );
 }
 
-CabinsTable.Header = Header;
-CabinsTable.Body = Body;
-CabinsTable.Row = Row;
-CabinsTable.Footer = Footer;
+BookingsTable.Header = Header;
+BookingsTable.Body = Body;
+BookingsTable.Row = Row;
+BookingsTable.Footer = Footer;
 
-export default CabinsTable;
+export default BookingsTable;

@@ -1,5 +1,5 @@
 import BookingRow from "./BookingRow";
-import Table from "../../ui/Table";
+import BookingsTable from "../../ui/BookingsTable";
 import Menus from "../../ui/Menus";
 import Empty from "../../ui/Empty";
 
@@ -23,27 +23,27 @@ function BookingTable() {
   return (
     <Menus>
       <TableContainer>
-        <Table columns="0.6fr 2fr 2.4fr 1.4fr 1fr 0.2fr">
-          <Table.Header>
+        <BookingsTable columns="0.6fr 2fr 2.4fr 1.4fr 1fr 0.2fr">
+          <BookingsTable.Header>
             <div>Cabin</div>
             <div>Guest</div>
             <div>Dates</div>
             <div>Status</div>
             <div>Amount</div>
             <div></div>
-          </Table.Header>
+          </BookingsTable.Header>
 
-          <Table.Body
+          <BookingsTable.Body
             data={bookings}
             render={(booking) => (
               <BookingRow key={booking.id} booking={booking} />
             )}
           />
-        </Table>
+        </BookingsTable>
 
-        <Table.Footer>
+        <BookingsTable.Footer>
           <Pagination count={count} />
-        </Table.Footer>
+        </BookingsTable.Footer>
       </TableContainer>
     </Menus>
   );

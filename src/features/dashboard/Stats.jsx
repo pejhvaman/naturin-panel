@@ -32,7 +32,7 @@ function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
       <Stat
         title="Bookings"
         icon={<GoBook />}
-        color="blue"
+        color="orange"
         value={numBookings}
       />
       <Stat
@@ -44,7 +44,7 @@ function Stats({ bookings, confirmedStays, numDays, cabinCount }) {
       <Stat
         title="Check ins"
         icon={<GoChecklist />}
-        color="indigo"
+        color="purple"
         value={checkins}
       />
       <Stat

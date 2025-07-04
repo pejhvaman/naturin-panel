@@ -13,8 +13,23 @@ const StyledModal = styled.div`
   background-color: var(--color-grey-0);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-lg);
-  padding: 3.2rem 4rem;
+  padding: 2rem;
+  padding-top: 3rem;
   transition: all 0.5s;
+  border: 1px solid var(--color-grey-400);
+  width: 90%;
+  max-height: 90svh;
+  overflow-y: scroll;
+
+  @media (width>768px) {
+    width: 70%;
+    padding: 3rem;
+    padding-top: 4rems;
+  }
+
+  @media (width>1024px) {
+    width: 50%;
+  }
 `;
 
 const Overlay = styled.div`
@@ -37,8 +52,8 @@ const Button = styled.button`
   transform: translateX(0.8rem);
   transition: all 0.2s;
   position: absolute;
-  top: 1.2rem;
-  right: 1.9rem;
+  top: 0.7rem;
+  right: 1rem;
 
   &:hover {
     background-color: var(--color-grey-100);

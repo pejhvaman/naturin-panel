@@ -7,6 +7,13 @@ import { useForm } from "react-hook-form";
 import FormRowValid from "../../ui/FormRowValid";
 import { useCreateCabin } from "./useCreateCabin";
 import { useEditCabin } from "./useEditCabin";
+import styled from "styled-components";
+
+const FormButtons = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
 
 function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
   const { id: editId, ...editValues } = cabinToEdit;
@@ -146,16 +153,18 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
 
       <FormRowValid>
         {/* type is an HTML attribute! */}
-        <Button
-          onClick={() => onCloseModal?.()}
-          variation="secondary"
-          type="reset"
-        >
-          Cancel
-        </Button>
-        <Button disabled={isWorking}>
-          {isEditSession ? "Edit Cabin" : "Create cabin"}
-        </Button>
+        <FormButtons>
+          <Button
+            onClick={() => onCloseModal?.()}
+            variation="secondary"
+            type="reset"
+          >
+            Cancel
+          </Button>
+          <Button disabled={isWorking}>
+            {isEditSession ? "Edit Cabin" : "Create cabin"}
+          </Button>
+        </FormButtons>
       </FormRowValid>
     </Form>
   );

@@ -22,6 +22,10 @@ const Img = styled.img`
   border-radius: 2px;
   margin-left: 4px;
   min-width: 20px;
+
+  @media (width <= 768px) {
+    display: none;
+  }
 `;
 
 const Cabin = styled.div`
@@ -40,6 +44,19 @@ const Discount = styled.div`
   font-family: "Sono";
   font-weight: 500;
   color: var(--color-green-700);
+  display: inline-block;
+
+  @media (width<=768px) {
+    display: none;
+  }
+`;
+
+const NoDiscount = styled.span`
+  display: inline-block;
+
+  @media (width<=768px) {
+    display: none;
+  }
 `;
 
 CabinRow.propType = {
@@ -76,12 +93,12 @@ function CabinRow({ cabin }) {
     <CabinsTable.Row>
       <Img src={image || "./image"} />
       <Cabin>{name}</Cabin>
-      <div>Fit up to {maxCapacity} guests</div>
+      <div style={{ minWidth: "8rem" }}>Fit up to {maxCapacity} guests</div>
       <Price>{formatCurrency(regularPrice)}</Price>
       {discount ? (
         <Discount>{formatCurrency(discount)}</Discount>
       ) : (
-        <span>&mdash;</span>
+        <NoDiscount>&mdash;</NoDiscount>
       )}
       <Modal>
         <Menus.Menu>

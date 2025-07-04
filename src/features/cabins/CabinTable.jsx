@@ -5,6 +5,23 @@ import CabinsTable from "../../ui/CabinsTable";
 import Menus from "../../ui/Menus";
 import { useSearchParams } from "react-router-dom";
 import Empty from "../../ui/Empty";
+import styled from "styled-components";
+
+const CabinPictureHeader = styled.div`
+  display: none;
+
+  @media (width>768px) {
+    display: block;
+  }
+`;
+
+const DiscountHeader = styled.div`
+  display: none;
+
+  @media (width>768px) {
+    display: block;
+  }
+`;
 
 function CabinTable() {
   const { isCabinsLoading, cabins } = useCabins();
@@ -37,11 +54,11 @@ function CabinTable() {
     <Menus>
       <CabinsTable columns="0.6fr 1.8fr 2.2fr 1fr 1fr 1fr">
         <CabinsTable.Header>
-          <div></div>
+          <CabinPictureHeader></CabinPictureHeader>
           <div>Cabin</div>
           <div>Capacity</div>
           <div>Price</div>
-          <div>Discount</div>
+          <DiscountHeader>Discount</DiscountHeader>
           <div></div>
         </CabinsTable.Header>
         <CabinsTable.Body
