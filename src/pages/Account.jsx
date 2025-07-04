@@ -6,15 +6,17 @@ import UpdatePasswordForm from "../features/authentication/UpdatePasswordForm";
 function Account() {
   return (
     <>
-      <Heading as="h1">Update your account</Heading>
-
-      <Row>
-        <Heading as="h3">Update user data</Heading>
+      <Row style={{ marginBottom: "4rem" }}>
+        <Heading style={{ marginInline: "auto" }} as="h2">
+          Update user data
+        </Heading>
         <UpdateUserDataForm />
       </Row>
 
       <Row>
-        <Heading as="h3">Update password</Heading>
+        <Heading style={{ marginInline: "auto" }} as="h2">
+          Update password
+        </Heading>
         <UpdatePasswordForm />
       </Row>
     </>

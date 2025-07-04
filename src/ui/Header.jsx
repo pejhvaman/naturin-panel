@@ -3,6 +3,10 @@ import UserAvatar from "../features/authentication/UserAvatar";
 import HeaderMenu from "./HeaderMenu";
 
 const StyledHeader = styled.header`
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 80;
   width: 100%;
   padding: 2rem;
   border-bottom: 1px solid var(--color-grey-100);

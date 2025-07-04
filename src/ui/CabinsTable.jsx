@@ -19,7 +19,7 @@ const CommonRow = styled.div`
   padding: 1.2rem;
 
   @media (width <=768px) {
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 3fr 5fr 3fr 0.6fr;
   }
 `;
 

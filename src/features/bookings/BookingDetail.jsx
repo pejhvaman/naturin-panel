@@ -20,8 +20,10 @@ import { useDeleteBooking } from "./useDeleteBooking";
 
 const HeadingGroup = styled.div`
   display: flex;
+  width: 100%;
   gap: 2.4rem;
   align-items: center;
+  justify-content: space-around;
 `;
 
 function BookingDetail() {
@@ -42,7 +44,7 @@ function BookingDetail() {
   const { status, id: bookingId } = booking;
 
   const statusToTagName = {
-    unconfirmed: "blue",
+    unconfirmed: "orange",
     "checked-in": "green",
     "checked-out": "silver",
   };
@@ -51,10 +53,23 @@ function BookingDetail() {
     <>
       <Row type="horizontal">
         <HeadingGroup>
-          <Heading as="h1">Booking #{bookingId}</Heading>
-          <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
+          <Heading as="h2">Booking #{bookingId}</Heading>
+          <Tag
+            style={{
+              fontSize: "1rem",
+              minWidth: "10rem",
+            }}
+            type={statusToTagName[status]}
+          >
+            {status.replace("-", " ")}
+          </Tag>
         </HeadingGroup>
-        <ButtonText onClick={moveBack}>&larr; Back</ButtonText>
+        <ButtonText
+          style={{ alignSelf: "end", margin: "1rem 0" }}
+          onClick={moveBack}
+        >
+          &larr; Back
+        </ButtonText>
       </Row>
 
       <BookingDataBox booking={booking} />
