@@ -7,6 +7,9 @@ import Uploader from "../data/Uploader";
 import { useToggleMenu } from "../context/MenuToggleContext";
 import ButtonIcon from "./ButtonIcon";
 import { GoListUnordered, GoX } from "react-icons/go";
+import { Overlay } from "./Modal";
+import useClickOutside from "../hooks/useClickOutside";
+import { useEffect } from "react";
 
 const StyledSidebar = styled.aside`
   padding: 1rem;
@@ -16,7 +19,7 @@ const StyledSidebar = styled.aside`
   position: fixed;
   left: 0;
   height: 100svh;
-  z-index: 100;
+  z-index: 5000;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -51,18 +54,23 @@ const SidebarToggleButton = styled.div`
 function Sidebar() {
   const { isOpen, toggle } = useToggleMenu();
 
-  return (
-    <StyledSidebar isOpen={isOpen}>
-      <SidebarToggleButton>
-        <ButtonIcon onClick={toggle}>
-          {isOpen ? <GoX /> : <GoListUnordered />}
-        </ButtonIcon>
-      </SidebarToggleButton>
-      <Logo />
-      <MainNav />
+  const ref = useClickOutside(toggle);
 
-      <Uploader />
-    </StyledSidebar>
+  return (
+    <>
+      <StyledSidebar ref={ref} isOpen={isOpen}>
+        <SidebarToggleButton>
+          <ButtonIcon onClick={toggle}>
+            {isOpen ? <GoX /> : <GoListUnordered />}
+          </ButtonIcon>
+        </SidebarToggleButton>
+        <Logo />
+        <MainNav />
+
+        <Uploader />
+      </StyledSidebar>
+      {isOpen && <Overlay />}
+    </>
   );
 }
 
