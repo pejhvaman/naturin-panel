@@ -8,8 +8,6 @@ import { useToggleMenu } from "../context/MenuToggleContext";
 import ButtonIcon from "./ButtonIcon";
 import { GoListUnordered, GoX } from "react-icons/go";
 import { Overlay } from "./Modal";
-import useClickOutside from "../hooks/useClickOutside";
-import { useEffect } from "react";
 
 const StyledSidebar = styled.aside`
   padding: 1rem;
@@ -45,20 +43,18 @@ const SidebarToggleButton = styled.div`
   text-align: right;
   /* display: block; */
 
-  @media (width>=768px) {
+  @media (width>= 1024px) {
     opacity: 0;
     visibility: hidden;
   }
 `;
 
 function Sidebar() {
-  const { isOpen, toggle } = useToggleMenu();
-
-  const ref = useClickOutside(toggle);
+  const { isOpen, toggle, close } = useToggleMenu();
 
   return (
     <>
-      <StyledSidebar ref={ref} isOpen={isOpen}>
+      <StyledSidebar isOpen={isOpen}>
         <SidebarToggleButton>
           <ButtonIcon onClick={toggle}>
             {isOpen ? <GoX /> : <GoListUnordered />}
@@ -69,7 +65,7 @@ function Sidebar() {
 
         <Uploader />
       </StyledSidebar>
-      {isOpen && <Overlay />}
+      {isOpen && <Overlay onClick={close} />}
     </>
   );
 }
