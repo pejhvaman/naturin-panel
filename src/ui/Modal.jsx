@@ -32,7 +32,8 @@ const StyledModal = styled.div`
   }
 `;
 
-const Overlay = styled.div`
+// exported to use with open sidebar!
+export const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
