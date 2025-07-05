@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { useToggleMenu } from "../context/MenuToggleContext";
 
 const StyledAppLayout = styled.div`
-  min-height: 100svh;
+  min-height: 100vh;
   transition: all 0.3s;
   overflow-y: auto;
   width: 100%;
